@@ -1,3 +1,11 @@
+COMMENT %
++++++++++++++++++++++++++++++++++++++++++++++++
+	CMPE324 - Operating Systems
+	Assignment/Lab 1
+	Author: Masood Ahmed
+++++++++++++++++++++++++++++++++++++++++++++++++
+%
+
 INCLUDE IRVINE32.INC
 .data
 user_prmpt0 byte "Please enter two integers to subtract: ", 0 
@@ -25,12 +33,16 @@ q6_answer byte "The reversed array is: ",0
 .code
 main proc
 
+	; -------------------------------------------------------
 	;;Question 1: subtract two given integers
+	; -------------------------------------------------------
 
 	Mov edx, offset user_prmpt0  
 	Call WriteString; don't change this line 
 	Call CRLF ; print new line 
+
 	;Add subtraction logic after this line
+
 	Call readint ; inputting the first number (integer)
 	Mov num1, eax ; moving the first number to variable named num1
 	Call readint ; inputting the second number (integer)
@@ -43,13 +55,16 @@ main proc
 	Call CRLF ; to print a new line
 
 
-
+	; -------------------------------------------------------
 	;;Question 2: Multiply two integers
+	; -------------------------------------------------------
 	
 	Mov edx, offset user_prmpt1
 	Call WriteString
 	Call CRLF
+
 	;Write your code after this line
+
 	Call readint ; inputting the first number (integer)
 	Mov num1, eax ; moving the first number to variable named num1
 	Call readint ; inputting the second number (integer)
@@ -63,16 +78,16 @@ main proc
 	Call CRLF ; to print a new line
 
 
-
-
-
-
+	; -------------------------------------------------------
 	;;Question 3: divide two integers
+	; -------------------------------------------------------
 
 	Mov edx, offset user_prmpt2
 	Call WriteString
 	Call CRLF
+
 	;Write your code after this line
+
 	Call readint ; inputting the first number (integer)
 	Mov num1, eax ; moving the first number to variable named num1
 	Call readint ; inputting the second number (integer)
@@ -90,13 +105,16 @@ main proc
 	Call writeint
 	Call CRLF ; to print a new line
 
-
+	; -------------------------------------------------------
 	;; Question 4: find the power
+	; -------------------------------------------------------
 	
 	Mov edx, offset user_prmpt3
 	Call WriteString
 	Call CRLF
+
 	;Write your code after this line
+
 	Call readint ; inputting the first number (integer)
 	Mov num1, eax ; moving the first number to variable named num1
 	Call readint ; inputting the second number (integer)
@@ -114,18 +132,25 @@ ENDING: Mov edx, offset q4_answer
         Call CRLF ; to print a new line
 
 
+	; -------------------------------------------------------
+	;; Question 5: find the fibonacci sequence until a given index (condition: the given term would be > 1)
+	; -------------------------------------------------------
 
-	;; Question 5: find the fibonacci sequence until a given index
-	
 	Mov edx, offset user_prmpt4
 	Call WriteString
 	Call CRLF
+
 	;Write your code after thils line
+
 	Call readint ; inputting the first number (integer)
 	Mov edx,0 ; clearing the edx
 	Mov num1, eax ; moving the number to variable named num1 for which fibonacci term is to found out
-	cmp num1,1; Comparing if num1 is 0 or 1
-	jle END3 ;  if num1 is 0 or 1, go to END3 and store the num1 as it is
+	Mov edx, offset q5_answer
+	Call WriteString;
+	Mov eax, 0 ; Printing initial 0
+	Call writeint
+	Mov eax, 1 ;  for printing intial 1
+	Call writeint
 	Mov ebx, 0 ; i = 0
 	Mov edx, 1 ; k = 1
 	Mov eax, 0 ; j = 0
@@ -134,21 +159,20 @@ L1: cmp ecx,1 ; Comparing and checking when to end loop
 	jz END2 ; jump to ending section when counter is 0
 	Add ebx, edx; i+k
 	Mov eax, ebx; j = i+k
+	Call writeint ; printing down the value at that specific term
 	Mov ebx, edx; updating i with k
 	Mov edx, eax; updating k with j
 	LOOP L1
-END3: Mov eax, num1 ;  getting the final number if num1 is 0 = 0 or 1 = 1
-END2: Mov edx, offset q5_answer
-	  Call WriteString;
-	  Call writeint
-      Call CRLF ; to print a new line
+END2: Call CRLF ; to print a new line
 
 
 
-
+	; -------------------------------------------------------
 	;;Question 6: reverse the array
+	; -------------------------------------------------------
 
 	;Write your code after this line
+
 	mov edx, offset user_prmpt5
 	Call WriteString
 	Call CRLF
@@ -158,11 +182,17 @@ END2: Mov edx, offset q5_answer
 	
 main endp
 
+; ===========================================
+; This is a procedure that reverses the array
+; ===========================================
+
 reverseArray proc
 
+	; for getting an input in an array size of 10 using a loop
 	Mov esi, offset arr
 	Mov ecx, LENGTHOF arr
 
+	; Getting the input
 	L5: Call readint
 		Mov [esi],eax
 		add esi, TYPE byte
@@ -175,10 +205,12 @@ reverseArray proc
 	Mov ecx, SIZEOF arr
 	Mov edx, offset q6_answer
 	Call WriteString;
-PrintReverse: dec esi
-			  Mov al, arr[esi]
-			  Call writeint
-			  LOOP PrintReverse
+
+	; For printing the array in reverse
+	PrintReverse: dec esi
+				  Mov al, arr[esi]
+				  Call writeint
+				  LOOP PrintReverse
 	ret
 reverseArray endp
 
