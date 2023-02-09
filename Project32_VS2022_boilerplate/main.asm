@@ -32,14 +32,12 @@ q6_answer byte "The reversed array is: ",0
 main proc
 
 	; -------------------------------------------------------
-	;;Question 1: subtract two given integers
+	;; Subtract two given integers
 	; -------------------------------------------------------
 
 	Mov edx, offset user_prmpt0  
 	Call WriteString; don't change this line 
 	Call CRLF ; print new line 
-
-	;Add subtraction logic after this line
 
 	Call readint ; inputting the first number (integer)
 	Mov num1, eax ; moving the first number to variable named num1
@@ -54,14 +52,12 @@ main proc
 
 
 	; -------------------------------------------------------
-	;;Question 2: Multiply two integers
+	;; Multiply two integers
 	; -------------------------------------------------------
 	
 	Mov edx, offset user_prmpt1
 	Call WriteString
 	Call CRLF
-
-	;Write your code after this line
 
 	Call readint ; inputting the first number (integer)
 	Mov num1, eax ; moving the first number to variable named num1
@@ -77,14 +73,12 @@ main proc
 
 
 	; -------------------------------------------------------
-	;;Question 3: divide two integers
+	;; Divide two integers
 	; -------------------------------------------------------
 
 	Mov edx, offset user_prmpt2
 	Call WriteString
 	Call CRLF
-
-	;Write your code after this line
 
 	Call readint ; inputting the first number (integer)
 	Mov num1, eax ; moving the first number to variable named num1
@@ -104,14 +98,12 @@ main proc
 	Call CRLF ; to print a new line
 
 	; -------------------------------------------------------
-	;; Question 4: find the power
+	;; Finding the power
 	; -------------------------------------------------------
 	
 	Mov edx, offset user_prmpt3
 	Call WriteString
 	Call CRLF
-
-	;Write your code after this line
 
 	Call readint ; inputting the first number (integer)
 	Mov num1, eax ; moving the first number to variable named num1
@@ -131,14 +123,12 @@ ENDING: Mov edx, offset q4_answer
 
 
 	; -------------------------------------------------------
-	;; Question 5: find the fibonacci sequence until a given index (condition: the given term would be > 1)
+	;; Finding the fibonacci sequence until a given index (condition: the given term would be > 1)
 	; -------------------------------------------------------
 
 	Mov edx, offset user_prmpt4
 	Call WriteString
 	Call CRLF
-
-	;Write your code after thils line
 
 	Call readint ; inputting the first number (integer)
 	Mov edx,0 ; clearing the edx
@@ -166,10 +156,8 @@ END2: Call CRLF ; to print a new line
 
 
 	; -------------------------------------------------------
-	;;Question 6: reverse the array
+	;; Reversing the array
 	; -------------------------------------------------------
-
-	;Write your code after this line
 
 	mov edx, offset user_prmpt5
 	Call WriteString
