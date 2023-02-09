@@ -1,7 +1,5 @@
 COMMENT %
 +++++++++++++++++++++++++++++++++++++++++++++++
-	CMPE324 - Operating Systems
-	Assignment/Lab 1
 	Author: Masood Ahmed
 ++++++++++++++++++++++++++++++++++++++++++++++++
 %
